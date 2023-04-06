@@ -1,6 +1,6 @@
 const fs = require('fs');
-const index = fs.readFileSync('index.html', 'utf-8');
-const data = JSON.parse(fs.readFileSync('user.json', 'utf-8'));
+const path =require('path')
+const data = JSON.parse(fs.readFileSync(path.resolve(__dirname,'../user.json'), 'utf-8'));
 const users = data.users;
 
 exports.getProduct = (req,res)=>{
