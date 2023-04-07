@@ -1,7 +1,7 @@
 // const fs = require('fs');
 const model = require('../model/product')
 const Product = model.Product;
-// const mongoose = require('mongoose');
+
 
 exports.createProduct = (req,res)=>{
     const product = new Product(req.body); 

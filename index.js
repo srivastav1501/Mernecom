@@ -24,9 +24,7 @@ async function main() {
 
 server.use(cors());
 server.use(express.json());
-server.use(morgan('combined', {
-  skip: function (req, res) { return res.statusCode < 400 }
-}));
+server.use(morgan('combined'));
 server.use(express.static(path.resolve(__dirname,process.env.PUBLIC_DIR)));
 server.use('/products',productRouter.routes);
 server.use('/users',usersRouter.routes);
