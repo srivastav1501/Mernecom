@@ -16,8 +16,7 @@ main().catch(err => console.log(err));
 
 async function main() {
   await mongoose.connect(process.env.MONGO_URL);
-   console.log('database connected')
- 
+  //  console.log('database connected') 
 }
 
 
@@ -25,7 +24,9 @@ async function main() {
 
 server.use(cors());
 server.use(express.json());
-server.use(morgan('default'));
+server.use(morgan('combined', {
+  skip: function (req, res) { return res.statusCode < 400 }
+}));
 server.use(express.static(path.resolve(__dirname,process.env.PUBLIC_DIR)));
 server.use('/products',productRouter.routes);
 server.use('/users',usersRouter.routes);
